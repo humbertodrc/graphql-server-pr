@@ -3,7 +3,7 @@ import {v1 as uuid} from 'uuid'
 
 const tasks = [
   {
-    id: uuid(),
+    id: "46e6bfa0-d972-11ed-a9eb-1f40628008de",
     title: 'Do laundry',
     description: 'Wash, dry, fold',
     priority: {
@@ -12,7 +12,7 @@ const tasks = [
     }
   },
   {
-    id: uuid(),
+    id: "46e6bfa0-d972-11ed-a9eb-1f40628008fa",
     title: 'Buy groceries',
     description: 'Milk, eggs, bread, cheese',
     priority: {
@@ -21,7 +21,7 @@ const tasks = [
     }
   },
   {
-    id: uuid(),
+    id: "46e6bfa0-d972-11ed-a9eb-1f40628008ra",
     title: 'Wash car',
     description: 'Soap, water, sponge',
     priority: {
@@ -30,7 +30,7 @@ const tasks = [
     }
   },
   {
-    id: uuid(),
+    id: "46e6bfa0-d972-11ed-a9eb-1f40628008da",
     title: 'Do dishes',
     description: 'Soap, water, sponge',
     priority: {
