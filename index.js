@@ -3,7 +3,7 @@ import {v1 as uuid} from 'uuid'
 
 const tasks = [
   {
-    id: 1,
+    id: uuid(),
     title: 'Do laundry',
     description: 'Wash, dry, fold',
     priority: {
@@ -12,7 +12,7 @@ const tasks = [
     }
   },
   {
-    id: 2,
+    id: uuid(),
     title: 'Buy groceries',
     description: 'Milk, eggs, bread, cheese',
     priority: {
@@ -21,7 +21,7 @@ const tasks = [
     }
   },
   {
-    id: 3,
+    id: uuid(),
     title: 'Wash car',
     description: 'Soap, water, sponge',
     priority: {
@@ -30,7 +30,7 @@ const tasks = [
     }
   },
   {
-    id: 4,
+    id: uuid(),
     title: 'Do dishes',
     description: 'Soap, water, sponge',
     priority: {
@@ -42,7 +42,7 @@ const tasks = [
 
 const typeDefs = gql`
   type Task {
-    id: Int!
+    id: ID!
     title: String!
     description: String
     priority: Priority
@@ -56,12 +56,13 @@ const typeDefs = gql`
   type Query {
     allTasks: [Task]!
     tasksCount: Int!
-    findTaskById(id: Int!): Task
+    findTaskById(id: ID!): Task
     findTaskByTitle(title: String!): Task
   }
 
   type Mutation {
     createTask(title: String!, description: String): Task
+    deleteTask(id: ID!): Task
   }
 `
 
@@ -82,7 +83,7 @@ const resolvers = {
     createTask: (root, args) => {
       const { title, description } = args
       const newTask = {
-        id: 5,
+        id: uuid(),
         title,
         description,
         priority: {
@@ -93,6 +94,12 @@ const resolvers = {
       tasks.push(newTask)
       return newTask
     },
+    deleteTask: (root, args) => {
+      const { id } = args
+      const task = tasks.find(task => task.id === id)
+      tasks.splice(tasks.indexOf(task), 1)
+      return task
+    }
   }
 }
 
